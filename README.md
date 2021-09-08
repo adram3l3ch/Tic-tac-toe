@@ -1,4 +1,29 @@
-# Getting Started with Create React App
+# FCC - TIC TAC TOE
+
+This is a solution to the [Tic tac toe project in the take home projects by Freecodecamp](https://www.freecodecamp.org/learn/coding-interview-prep/take-home-projects/build-a-tic-tac-toe-game).
+
+### The challenge
+
+Users should be able to:
+
+-   play a game of Tic Tac Toe with the computer.
+-   game will reset as soon as it's over so I can play again.
+-   choose whether want to play as X or O.
+
+### Links
+
+-   Solution URL: [Github](https://github.com/adram3l3ch/Tic-toc-toe)
+-   Live Site URL: [Netlify](https://adramelech-tic-toc-toe.netlify.app/)
+
+### Built with
+
+-   Semantic HTML5 markup
+-   CSS custom properties
+-   Flexbox
+-   CSS Grid
+-   [React](https://reactjs.org/) - JS library
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

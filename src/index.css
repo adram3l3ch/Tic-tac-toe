@@ -37,6 +37,10 @@ main > * {
 	margin-bottom: 20px;
 }
 
+header > * {
+	margin-bottom: 20px;
+}
+
 .table {
 	display: flex;
 	width: 400px;
