@@ -26,7 +26,7 @@ const ContextProvider = ({ children }) => {
 			}, 3000);
 		}
 		if (winner !== "Draw")
-			setScore({ ...score, [winner]: score[winner] + 1 });
+			setScore((score) => ({ ...score, [winner]: score[winner] + 1 }));
 	}, [winner]);
 
 	return (

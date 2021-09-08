@@ -1,5 +1,28 @@
 import { WIN_COMBO } from "./WIN_COMBO";
 
+export const checkWin = (newBoard, player, choices) => {
+	let winorlose = WIN_COMBO.some((combo) => {
+		return combo.every((value) => newBoard[value] === choices[player]);
+	});
+	return winorlose ? player : null;
+};
+
+export const checkDraw = (values, winner) => {
+	if (emptyCells(values).length === 0 && !winner) return true;
+	else return null;
+};
+
+export const emptyCells = (values) => {
+	let arrayOfEmptyCells = [];
+	values.forEach((value, index) => {
+		if (typeof value === "number") arrayOfEmptyCells.push(index);
+	});
+
+	return arrayOfEmptyCells;
+};
+
+// ---------------------minimax-------------------
+
 function minimax(newBoard, player, choices, values) {
 	var availSpots = emptyCells(values);
 
@@ -16,11 +39,11 @@ function minimax(newBoard, player, choices, values) {
 		move.index = newBoard[availSpots[i]];
 		newBoard[availSpots[i]] = player;
 
-		if (player == choices.bot) {
-			var result = minimax(newBoard, choices.user);
+		if (player === choices.bot) {
+			var result = minimax(newBoard, choices.user, choices, values);
 			move.score = result.score;
 		} else {
-			var result = minimax(newBoard, choices.bot);
+			var result = minimax(newBoard, choices.bot, choices, values);
 			move.score = result.score;
 		}
 
@@ -52,7 +75,7 @@ function minimax(newBoard, player, choices, values) {
 
 // ---------------------minimax-------------------
 
-const botChoice = (choices, values, setValues, setIsBotTurn) => {
+export const botChoice = (choices, setIsBotTurn, setValues, values) => {
 	let bestchoice = minimax(values, choices.bot, choices, values).index;
 	setIsBotTurn(false);
 	setValues((values) => [
@@ -61,25 +84,3 @@ const botChoice = (choices, values, setValues, setIsBotTurn) => {
 		...values.slice(bestchoice + 1),
 	]);
 };
-
-const checkWin = (newBoard, player, choices) => {
-	let winorlose = WIN_COMBO.some((combo) => {
-		return combo.every((value) => newBoard[value] === choices[player]);
-	});
-	return winorlose ? player : null;
-};
-
-const emptyCells = (values) => {
-	let arrayOfEmptyCells = [];
-	values.map((value, index) => {
-		if (typeof value === "number") arrayOfEmptyCells.push(index);
-	});
-	return arrayOfEmptyCells;
-};
-
-const checkDraw = (winner, values) => {
-	if (emptyCells(values).length === 0 && !winner) return true;
-	else return null;
-};
-
-export { botChoice, checkDraw, checkWin, emptyCells };
