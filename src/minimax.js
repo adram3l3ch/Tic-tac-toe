@@ -40,9 +40,11 @@ function minimax(newBoard, player, choices, values) {
 		newBoard[availSpots[i]] = player;
 
 		if (player === choices.bot) {
+			// eslint-disable-next-line
 			var result = minimax(newBoard, choices.user, choices, values);
 			move.score = result.score;
 		} else {
+			// eslint-disable-next-line
 			var result = minimax(newBoard, choices.bot, choices, values);
 			move.score = result.score;
 		}
@@ -55,6 +57,7 @@ function minimax(newBoard, player, choices, values) {
 	var bestMove;
 	if (player === choices.bot) {
 		var bestScore = -10000;
+		// eslint-disable-next-line
 		for (var i = 0; i < moves.length; i++) {
 			if (moves[i].score > bestScore) {
 				bestScore = moves[i].score;
@@ -62,7 +65,9 @@ function minimax(newBoard, player, choices, values) {
 			}
 		}
 	} else {
+		// eslint-disable-next-line
 		var bestScore = 10000;
+		// eslint-disable-next-line
 		for (var i = 0; i < moves.length; i++) {
 			if (moves[i].score < bestScore) {
 				bestScore = moves[i].score;
