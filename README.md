@@ -12,8 +12,8 @@ Users should be able to:
 
 ### Links
 
--   Solution URL: [Github](https://github.com/adram3l3ch/Tic-toc-toe)
--   Live Site URL: [Netlify](https://adramelech-tic-toc-toe.netlify.app/)
+-   Solution URL: [Github](https://github.com/adram3l3ch/Tic-tac-toe)
+-   Live Site URL: [Netlify](https://adramelech-tic-tac-toe.netlify.app/)
 
 ### Built with
 
