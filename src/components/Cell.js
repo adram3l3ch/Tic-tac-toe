@@ -32,7 +32,7 @@ const Cell = ({ value, index }) => {
 			);
 		}
 		return () => clearTimeout(timeout);
-	}, [isBotTurn, winner, choices, setIsBotTurn, setValues, values]);
+	}, [isBotTurn, winner, choices, setIsBotTurn, setValues, values, isMultiplayer]);
 
 	const updateValues = player => {
 		setValues(values => [
