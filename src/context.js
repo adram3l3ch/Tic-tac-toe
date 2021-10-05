@@ -7,6 +7,7 @@ const ContextProvider = ({ children }) => {
 	const [values, setValues] = useState(initialValue);
 	const [isBotTurn, setIsBotTurn] = useState(false);
 	const [choices, setChoices] = useState({ user: null, bot: null });
+	const [isMultiplayer, setIsMultiplayer] = useState(null);
 	const [winner, setWinner] = useState(null);
 	const [score, setScore] = useState({ user: 0, bot: 0 });
 
@@ -23,10 +24,9 @@ const ContextProvider = ({ children }) => {
 			setTimeout(() => {
 				setValues(initialValue);
 				setIsBotTurn(false);
-			}, 3000);
+			}, 2000);
 		}
-		if (winner !== "Draw")
-			setScore((score) => ({ ...score, [winner]: score[winner] + 1 }));
+		if (winner !== "Draw") setScore(score => ({ ...score, [winner]: score[winner] + 1 }));
 	}, [winner]);
 
 	return (
@@ -43,6 +43,8 @@ const ContextProvider = ({ children }) => {
 				score,
 				setScore,
 				reset,
+				setIsMultiplayer,
+				isMultiplayer,
 			}}
 		>
 			{children}

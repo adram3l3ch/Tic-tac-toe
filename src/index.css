@@ -76,29 +76,52 @@ header > * {
 	transform: translate(-50%, -50%);
 	background: white;
 	color: #15161e;
-	font-size: 2rem;
+	font-size: 1.5rem;
+	font-weight: 600;
 	width: max-content;
 	padding: 0.75em 2em;
-	border-radius: 20px;
+	border-radius: 10px;
 }
 
-main > button {
+main > .btn {
+	background: rgb(255, 48, 48);
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
+	cursor: pointer;
+	transition: all 0.2s linear;
+}
+
+main > .btn:hover {
+	width: 100px;
+	border-radius: 0;
+}
+
+main > .btn svg path {
+	stroke: white;
+}
+
+main > .btn:hover svg {
+	display: none;
+}
+main > .btn:hover button {
+	display: block;
+}
+
+main .btn button {
 	border: none;
 	outline: none;
-	background: red;
-	padding: 0.5em 1em;
+	background: none;
+	font-family: inherit;
+	letter-spacing: 0.1em;
 	color: white;
-	display: block;
-	margin: auto;
-	font-size: 1.5rem;
-	margin-top: 20px;
+	font-size: 1rem;
 	cursor: pointer;
-	transition: all 0.1s linear;
-}
-
-main > button:hover {
-	box-shadow: 0 0 10px black;
-	border-radius: 10px;
+	display: none;
 }
 
 .choices-main {
@@ -135,6 +158,39 @@ main > button:hover {
 	font-family: "Open Sans", sans-serif;
 	font-size: 8rem;
 	cursor: pointer;
+}
+
+.playMode {
+	position: absolute;
+	inset: 0;
+	background-color: #15161e;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 50px;
+}
+
+.playMode h2 {
+	font-weight: 400;
+}
+
+.playMode .btns button {
+	background: none;
+	border: none;
+	border: 2px solid white;
+	color: white;
+	outline: none;
+	padding: 1em 2em;
+	min-width: 150px;
+	margin: 0 10px;
+	font-family: inherit;
+	cursor: pointer;
+}
+
+.playMode .btns button:hover {
+	background-color: #7893aa;
+	border-color: #7893aa;
 }
 
 #X {

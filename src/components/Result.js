@@ -2,14 +2,20 @@ import React from "react";
 import { useGlobalContext } from "../context";
 
 const Result = () => {
-	const { winner, choices } = useGlobalContext();
+	const { winner, choices, isMultiplayer } = useGlobalContext();
 	return (
 		<div className="result">
-			{winner === "Draw"
+			{isMultiplayer === false
+				? winner === "Draw"
+					? winner
+					: choices[winner] === choices.user
+					? "You Win"
+					: "You Lost"
+				: winner === "Draw"
 				? winner
 				: choices[winner] === choices.user
-				? "You Win"
-				: "You Lost"}
+				? "Player 1 Win"
+				: "Player 2 Win"}
 		</div>
 	);
 };

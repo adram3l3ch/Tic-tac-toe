@@ -2,13 +2,17 @@ import React from "react";
 import { useGlobalContext } from "../context";
 
 const Header = () => {
-	const { isBotTurn } = useGlobalContext();
+	const { isBotTurn, isMultiplayer } = useGlobalContext();
 	return (
 		<header>
 			<h1>TIC TAC TOE</h1>
 			<h2>
 				It's
-				<span>{isBotTurn ? " Bot's " : " Your "}</span>
+				{isMultiplayer === false ? (
+					<span>{isBotTurn ? " Bot's " : " Your "}</span>
+				) : (
+					<span>{isBotTurn ? " Player 2's " : " Player 1's "}</span>
+				)}
 				Turn
 			</h2>
 		</header>

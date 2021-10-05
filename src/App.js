@@ -1,19 +1,25 @@
-import ChoiceSelector from "./components/ChoiceSelector";
+import ChoiceSelector from "./Pages/ChoiceSelector";
 import Header from "./components/Header";
 import Score from "./components/Score";
 import Table from "./components/Table";
 import { useGlobalContext } from "./context";
+import PlayMode from "./Pages/PlayMode";
+import { GrPowerReset } from "react-icons/gr";
 
 function App() {
-	const { reset, choices } = useGlobalContext();
+	const { reset, choices, isMultiplayer } = useGlobalContext();
 
 	return (
 		<main>
 			<Header />
 			<Table />
 			<Score />
-			<button onClick={reset}>Reset</button>
-			{!choices.user && <ChoiceSelector />}
+			<div className="btn" onClick={reset}>
+				<GrPowerReset />
+				<button>Reset</button>
+			</div>
+			{!choices.user && isMultiplayer !== null && <ChoiceSelector />}
+			{isMultiplayer === null && <PlayMode />}
 		</main>
 	);
 }

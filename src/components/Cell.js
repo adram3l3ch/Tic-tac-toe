@@ -11,11 +11,12 @@ const Cell = ({ value, index }) => {
 		setIsBotTurn,
 		setWinner,
 		winner,
+		isMultiplayer,
 	} = useGlobalContext();
 
 	useEffect(() => {
 		if (values) {
-			setWinner((winner) =>
+			setWinner(winner =>
 				checkDraw(values, winner)
 					? "Draw"
 					: checkWin(values, isBotTurn ? "user" : "bot", choices)
@@ -24,25 +25,31 @@ const Cell = ({ value, index }) => {
 	}, [values, choices, isBotTurn, setWinner]);
 
 	useEffect(() => {
-		if (isBotTurn && !!emptyCells(values) && !winner) {
+		if (isBotTurn && !!emptyCells(values) && !winner && !isMultiplayer) {
 			var timeout = setTimeout(
 				() => botChoice(choices, setIsBotTurn, setValues, values),
-				1000
+				500
 			);
 		}
 		return () => clearTimeout(timeout);
 	}, [isBotTurn, winner, choices, setIsBotTurn, setValues, values]);
 
+	const updateValues = player => {
+		setValues(values => [
+			...values.slice(0, index),
+			choices[player],
+			...values.slice(index + 1),
+		]);
+	};
+
 	const clickHandler = () => {
-		if (!isBotTurn && !winner) {
-			setValues((values) => [
-				...values.slice(0, index),
-				choices.user,
-				...values.slice(index + 1),
-			]);
-			if (!winner) {
-				setIsBotTurn(true);
-			}
+		if (typeof values[index] === "string") return;
+		if (!isBotTurn && !winner && !isMultiplayer) {
+			updateValues("user");
+			setIsBotTurn(true);
+		} else if (!winner) {
+			updateValues(isBotTurn ? "bot" : "user");
+			setIsBotTurn(!isBotTurn);
 		}
 	};
 
