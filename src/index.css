@@ -6,6 +6,7 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	user-select: none;
 }
 
 body {
@@ -23,6 +24,8 @@ main {
 	font-family: "Montserrat", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	height: 80vh;
+	min-height: 600px;
 }
 
 h2 {
@@ -60,6 +63,7 @@ header > * {
 	font-family: "Open Sans", sans-serif;
 	font-size: 3rem;
 	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
 }
 
 .cell:nth-child(n + 7) {
@@ -212,5 +216,10 @@ main .btn button {
 	}
 	.choices-main {
 		padding: 50px 0;
+	}
+	main {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 	}
 }
